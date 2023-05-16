@@ -76,6 +76,7 @@ class Trainer:
             wandb.login()
             suffix = "-dev" if is_dev else ""
             wandb.init(project=f"auto-dr{suffix}", config=self.config.dict)
+            pass
 
         # seed
         torch.manual_seed(self.config.random_seed)
@@ -172,7 +173,8 @@ class Trainer:
             wandb_logs.update(self.randomizer.info)
 
             # save
-            if j % checkpoint_interval == 0:
+            is_last_iteration = j == (self.config.policy_iterations - 1)
+            if j % checkpoint_interval == 0 or is_last_iteration:
                 save_checkpoint(
                     iteration=j,
                     checkpoint_dir=self.config.checkpoint_dir,
@@ -183,32 +185,15 @@ class Trainer:
                 )
                 pass
 
-                # save
-                is_last_iteration = j == (self.config.policy_iterations - 1)
-                if j % checkpoint_interval == 0 or is_last_iteration:
-                    save_checkpoint(
-                        iteration=j,
-                        checkpoint_dir=self.config.checkpoint_dir,
-                        checkpoint_name=str(timestamp()),
-                        actor=self.actor_critic.actor,
-                        critic=self.actor_critic.critic,
-                        optimizer=self.ppo.optimizer,
-                    )
-                    pass
-
-                if j % evaluation_interval == 0 or is_last_iteration:
-                    # @todo evaluate
-                    pass
-
-                if enable_wandb:
-                    wandb.log(wandb_logs)
-
-                # end
+            if j % evaluation_interval == 0 or is_last_iteration:
+                # @todo evaluate
+                pass
 
             if enable_wandb:
-                wandb.finish()
-            pass
-        pass
+                wandb.log(wandb_logs)
+
+        if enable_wandb:
+            wandb.finish()
 
     @property
     def log_dir(self) -> str:

@@ -110,9 +110,6 @@ class BaseRandomizedEnv(gym.Env, ABC):
         """
         Take one step in the current environment given the action.
 
-        Additionally, as per the RL^2 paper this wrapper updates the observation returned to include the previous
-        action, reward, and whether the episode is done.
-
         Args:
             action (Any): Action to be taken in the environment.
 

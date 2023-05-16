@@ -318,7 +318,7 @@ class Randomizer:
 
             # range
             info[f"randomizer/{param.name}_range"] = param.range
-            continue
+            pass
 
         info["randomizer/entropy"] = self.entropy()
 

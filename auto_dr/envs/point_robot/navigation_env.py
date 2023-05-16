@@ -3,14 +3,12 @@ import numpy as np
 
 import gym
 from gym.utils import EzPickle
+from gym import spaces
 
 from auto_dr.envs.base_randomized_env import BaseRandomizedEnv
-
 from auto_dr.randomization.randomization_parameter import RandomizationParameter
 from auto_dr.randomization.randomization_bound_type import RandomizationBoundType
 from auto_dr.randomization.randomization_bound import RandomizationBound
-
-from gym import spaces
 
 
 class NavigationEnv(EzPickle, BaseRandomizedEnv):
@@ -136,7 +134,7 @@ class NavigationEnv(EzPickle, BaseRandomizedEnv):
         """
         return self._randomized_parameters[param_name]
 
-    def update_task(self, task: dict):
+    def update_task(self, task: dict) -> None:
         """
         Sample a new goal position for the navigation task
 
