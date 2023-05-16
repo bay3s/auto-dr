@@ -210,15 +210,6 @@ class Randomizer:
         """
         self.buffer.insert(sampled_boundary, episode_return)
 
-    def start_meta_episode(self):
-        """
-        Resets the difficulty adjusted flags to `False` at the beginning of the meta-episode.
-
-        Returns:
-            None
-        """
-        self.difficulty_updated = [False] * self.parallel_envs.num_envs
-
     def _on_step(self, dones: List, infos: List) -> None:
         """
         Randomizer logic to be executed after each environment step.
