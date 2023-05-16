@@ -52,7 +52,6 @@ class Randomizer:
         self.delta = delta
 
         self.sampled_boundaries = [None] * parallel_envs.num_envs
-        self.difficulty_updated = [False] * parallel_envs.num_envs
 
         # performance
         self.lower_performance_threshold = performance_threshold_lower
@@ -101,7 +100,7 @@ class Randomizer:
 
     def re_evaluate(self, sampled_boundary: RandomizationBoundary) -> None:
         """
-        Update ADR bounds based on the performance of the given body part.
+        Update ADR bounds based on the performance for a given boundary.
 
         Args:
           sampled_boundary (RandomizationBoundary): Sampled boundary to evaluate.
