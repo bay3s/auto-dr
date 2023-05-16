@@ -230,7 +230,7 @@ class Randomizer:
         )
 
         for done, info, env_idx, boundary in zipped:
-            if not done and not self.difficulty_updated[env_idx]:
+            if not done:
                 continue
 
             if boundary is not None:
