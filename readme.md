@@ -1,4 +1,4 @@
-### Automatic Domain Randomization
+### Automatic Domain Randomization (ADR)
 
 *Intro*
 - The main hypothesis that motivates ADR is that training on a maximally diverse distribution over environments leads to transfer via emergent meta-learning.
