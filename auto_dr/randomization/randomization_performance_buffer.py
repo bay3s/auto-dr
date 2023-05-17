@@ -122,19 +122,3 @@ class RandomizationPerformanceBuffer:
         bound = randomization_boundary.bound
 
         return self._buffer[param.name][bound.type.value]
-
-    def __str__(self):
-        to_str = ""
-
-        for param in self._randomized_parameters:
-            lower_bound = param.lower_bound
-            upper_bound = param.upper_bound
-
-            to_str += (
-                f"__{param.name}__ \n"
-                f" lower_bound: {self._buffer[param.name][lower_bound.type.value]}\n"
-                f" upper_bound: {self._buffer[param.name][upper_bound.type.value]}\n"
-                f"\n"
-            )
-
-        return to_str
