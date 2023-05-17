@@ -56,11 +56,6 @@ class Randomizer:
         # performance
         self.lower_performance_threshold = performance_threshold_lower
         self.upper_performance_threshold = performance_threshold_upper
-
-        # logging
-        self.last_performances = []
-        self.last_increments = []
-        self.current_bound = 0
         pass
 
     @staticmethod
