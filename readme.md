@@ -42,4 +42,4 @@ $$H(P_\phi) = \frac{1}{d} \sum \space log (\phi_i^H - \phi_i^L)$$
 	- On the other hand, the parameter is decreased if the average model performance is worse than the low threshold.
 
 *Reference*
-- Solving Rubik's Cube with a Robot Hand https://github.com/bay3s/auto-dr
+- Solving Rubik's Cube with a Robot Hand https://arxiv.org/abs/1910.07113
