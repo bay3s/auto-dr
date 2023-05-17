@@ -1,5 +1,4 @@
-*Reference*
-- Solving Rubik's Cube with a Robot Hand (Paper) https://github.com/bay3s/auto-dr
+### Automatic Domain Randomization
 
 *Intro*
 - The main hypothesis that motivates ADR is that training on a maximally diverse distribution over environments leads to transfer via emergent meta-learning.
@@ -42,3 +41,5 @@ $$H(P_\phi) = \frac{1}{d} \sum \space log (\phi_i^H - \phi_i^L)$$
 	- If average model performance is better than the high threshold, the parameter for the chosen dimension is increased.
 	- On the other hand, the parameter is decreased if the average model performance is worse than the low threshold.
 
+*Reference*
+- Solving Rubik's Cube with a Robot Hand https://github.com/bay3s/auto-dr
