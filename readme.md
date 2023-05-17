@@ -2,8 +2,8 @@
 
 *Intro*
 - The main hypothesis that motivates ADR is that training on a maximally diverse distribution over environments leads to transfer via emergent meta-learning.
-- More concretely, if the model has some form of memory then it can learn to adjust its behavior during deployment to imrpove operformance on the current environment.
-- It is hypothesized that this happens if the training distribution is so large that the model cannot memorize a special pyrpose solution per environment as a result of its finite capacity.
+- More concretely, if the model has some form of memory then it can learn to adjust its behavior during deployment to improve performance on the current environment.
+- It is hypothesized that this happens if the training distribution is so large that the model cannot memorize a special purpose solution per environment as a result of its finite capacity.
 - ADR is a first step in this direction of unbounded environmental complexity; it automates and gradially expands the randomization ranges that parameterize a distribution over environments.
 
 *Overview*
@@ -16,9 +16,7 @@
 - The meat of the logic and implementation resides in the [auto_dr/randomization](https://github.com/bay3s/auto-dr/tree/main/auto_dr/randomization) folder.
 - The [Randomizer](https://github.com/bay3s/auto-dr/blob/main/auto_dr/randomization/randomizer.py) class wraps parallelized environments and adjusts their entropy depending on the performance of the agent. 
 - A fairly custom environment setup is required (such as this one for [2D-Navigation](https://github.com/bay3s/auto-dr/blob/main/auto_dr/envs/point_robot/navigation_env.py)) which includes clear definitions for parameter bounds and values.
-- In the 2D-Navigation environment where the agent's goal is to reach a specific point, the environment parameterization is progressively updated by widening the range of possible goal states as agent performance improves.
-- The plots below show the progressive changes in environment parameterization resulting from the application of ADR on the 2D-Navigation Environment.
-
+- In the 2D-Navigation environment where the agent's goal is to reach a specific point, the environment parameterization is progressively updated by widening the range of possible goal states (plotted below) as agent performance improves.
 
 *Parameter Bounds*
 
