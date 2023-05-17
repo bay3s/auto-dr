@@ -4,7 +4,7 @@
 - The main hypothesis that motivates ADR is that training on a maximally diverse distribution over environments leads to transfer via emergent meta-learning.
 - More concretely, if the model has some form of memory then it can learn to adjust its behavior during deployment to imrpove operformance on the current environment.
 - It is hypothesized that this happens if the training distribution is so large that the model cannot memorize a special pyrpose solution per environment as a result of its finite capacity.
-- ADR is a first step in this direction of unbounded environmental xomplexity; it automates and gradially expands the randomization ranges that parameterize a distribution oover environments.
+- ADR is a first step in this direction of unbounded environmental complexity; it automates and gradially expands the randomization ranges that parameterize a distribution oover environments.
 
 
 *Overview*
