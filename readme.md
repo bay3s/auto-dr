@@ -42,7 +42,7 @@ $$H(P_\phi) = \frac{1}{d} \sum \space log (\phi_i^H - \phi_i^L)$$
 	- On the other hand, the parameter is decreased if the average model performance is worse than the low threshold.
 
 *Codebase*
-- You should be able to find the meat of the logic and implementation under [auto_dr/randomization](https://github.com/bay3s/auto-dr/tree/main/auto_dr/randomization) folder here 
+- You should be able to find the meat of the logic and implementation under the [auto_dr/randomization](https://github.com/bay3s/auto-dr/tree/main/auto_dr/randomization).
 - The [Randomizer](https://github.com/bay3s/auto-dr/blob/readme/auto_dr/randomization/randomizer.py) class wraps environments and adjusts the entropy of the environment depending on the performance of the agent. 
 - A fairly custom environment setup is required (such as this one for [2D-Navigation](https://github.com/bay3s/auto-dr/blob/readme/auto_dr/envs/point_robot/navigation_env.py)) which includes clear definitions for parameter bounds and values.
 
