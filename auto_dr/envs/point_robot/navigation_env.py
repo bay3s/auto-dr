@@ -52,7 +52,6 @@ class NavigationEnv(EzPickle, BaseRandomizedEnv):
         max_episode_steps: int = 100,
         randomizable_parameters: List[RandomizationParameter] = RANDOMIZABLE_PARAMETERS,
         seed: int = None,
-        domain_randomized: bool = False,
     ):
         """
         2D navigation problems, as described in [1]. The code is adapted from https://github.com/cbfinn/maml_rl/
@@ -69,7 +68,6 @@ class NavigationEnv(EzPickle, BaseRandomizedEnv):
             max_episode_steps (int): Max number of episode steps.
             randomizable_parameters (List[RandomizationParameter]): List of randomized parameters and specs.
             seed (int): Random seed for sampling.
-            domain_randomized (bool): Whether this is domain randomized.
         """
         EzPickle.__init__(self)
         BaseRandomizedEnv.__init__(self, seed)
@@ -83,7 +81,6 @@ class NavigationEnv(EzPickle, BaseRandomizedEnv):
 
         # params
         self._randomized_parameters = self._init_params(randomizable_parameters)
-        self._domain_randomized = domain_randomized
 
         # sampled
         self._current_state = None
@@ -92,9 +89,6 @@ class NavigationEnv(EzPickle, BaseRandomizedEnv):
         # spaces
         self.observation_space = spaces.Box(low=-np.inf, high=np.inf, shape=(2,))
         self.action_space = spaces.Box(low=-0.1, high=0.1, shape=(2,))
-
-        # sample
-        self._sampled_bound = None
         pass
 
     @staticmethod
