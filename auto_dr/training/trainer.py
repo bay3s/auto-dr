@@ -35,7 +35,6 @@ class Trainer:
         # private
         self._device = None
         self._log_dir = None
-        self._eval_log_dir = None
 
         # general
         self.ppo = None
@@ -53,7 +52,6 @@ class Trainer:
     def train(
         self,
         checkpoint_interval: int = 1,
-        evaluation_interval: int = 10,
         enable_wandb: bool = True,
         is_dev: bool = True,
     ) -> None:
@@ -62,7 +60,6 @@ class Trainer:
 
         Args:
             checkpoint_interval (bool): Number of iterations after which to checkpoint.
-            evaluation_interval (bool): Number of iterations after which to evaluate.
             enable_wandb (bool): Whether to log to Wandb, `True` by default.
             is_dev (bool): Whether this is a dev run of th experiment.
 
@@ -84,8 +81,6 @@ class Trainer:
 
         # clean
         logging_utils.cleanup_log_dir(self.log_dir)
-        # @todo logging_utils.cleanup_log_dir(self.eval_log_dir)
-
         torch.set_num_threads(1)
 
         self.vectorized_envs = make_vec_envs(
@@ -183,10 +178,6 @@ class Trainer:
                     critic=self.actor_critic.critic,
                     optimizer=self.ppo.optimizer,
                 )
-                pass
-
-            if j % evaluation_interval == 0 or is_last_iteration:
-                # @todo evaluate
                 pass
 
             if enable_wandb:

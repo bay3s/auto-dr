@@ -86,10 +86,8 @@ class ExperimentConfig:
     use_gae: bool
     gae_lambda: bool
 
-    # logs
-    log_interval: int
+    # checkpoint
     checkpoint_interval: int
-    eval_interval: int
     pass
 
     def __post_init__(self):
@@ -102,6 +100,16 @@ class ExperimentConfig:
         object.__setattr__(self, "_timestamp", int(datetime.timestamp(datetime.now())))
 
     @property
+    def timestamp(self) -> int:
+        """
+        Returns a timestamp for the experiment config
+
+        Returns:
+            None
+        """
+        return self._timestamp
+
+    @property
     def directory(self) -> str:
         """
         Return the directory to store logs.
@@ -109,7 +117,7 @@ class ExperimentConfig:
         Returns:
           str
         """
-        return f"./results/{self.env_name.lower()}/run-{self._timestamp}/"
+        return f"./results/{self.env_name.lower()}/run-{self.timestamp}/"
 
     @property
     def log_dir(self) -> str:

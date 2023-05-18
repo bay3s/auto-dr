@@ -32,7 +32,6 @@ class StatefulCritic(BaseCritic):
         if len(observation_space.shape) != 1:
             raise NotImplementedError("Expected vectorized 1-d observation space.")
 
-        self._hidden_size = hidden_sizes
         self._recurrent_state_size = recurrent_state_size
 
         self._gru = GRU(observation_space.shape[0], recurrent_state_size)

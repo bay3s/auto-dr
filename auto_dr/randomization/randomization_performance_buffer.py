@@ -99,15 +99,6 @@ class RandomizationPerformanceBuffer:
         self._buffer[param.name][bound.type.value] = deque(maxlen=self._buffer_size)
         pass
 
-    def truncate_all(self) -> None:
-        """
-        Truncate all buffers.
-
-        Returns:
-          None
-        """
-        self._buffer = self._init_buffer(self._randomized_parameters, self._buffer_size)
-
     def get(self, randomization_boundary: RandomizationBoundary) -> list:
         """
         Get episode returns associated with a specific parameter boundary.

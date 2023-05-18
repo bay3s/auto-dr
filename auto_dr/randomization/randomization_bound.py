@@ -24,7 +24,6 @@ class RandomizationBound:
           None
         """
         assert self.min_value <= self.value <= self.max_value
-        self.init_value = self.value
         pass
 
     def increase(self, delta: float) -> None:
